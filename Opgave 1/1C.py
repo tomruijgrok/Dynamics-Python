@@ -22,19 +22,19 @@ m = 6 #kg
 
 t = np.linspace(t0, t1, 1 + t1/dt)
 
-f = np.sin(t)
-
 def acceleration(t):
-    return f/m
+    f = np.sin(t)
+    a = f/m
+    return a
 
 def verplaatsinganalytisch(t):
     y_an = np.zeros(len(t)) 
     v_an = np.zeros(len(t))
     y_an[0] = y0
-    a0 =  -g
     for n in range(len(t)):
-        v_an[n] = v0 + a0*t[n]
-        y_an[n] = y0 + v_an[n]*t[n]
+        a_an = acceleration(t[n])
+        v_an[n] = v_an[n] + a_an*t[n]
+        y_an[n] = y_an[n] + v_an[n]*t[n]
     return y_an
 
 def verplaatsing(t):
@@ -62,6 +62,7 @@ plt.plot(t, y_an, 'y--')  #make a yellow dashed line
 plt.figure(2)
 plt.plot(t, y_num-y_an)   
 
-print (y_an)
-print(y_num)
-print(y_num-y_an)
+
+print(y_an[100])
+print(y_num[100])
+print(y_num[100]-y_an[100])
