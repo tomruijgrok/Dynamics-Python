@@ -30,9 +30,9 @@ def verplaatsingnumeriek(t):
         a = acc
         x_num[n+1] = x_num[n] + v_num[n]*dt
         v_num[n+1] = v_num[n] + a*dt
-        return x_num, v_num, a
+    return x_num, v_num, a
 
-x_num,v,a = verplaatsingnumeriek(t)
+x_num, v_num, a = verplaatsingnumeriek(t)
 
 
-print(x_num)
+print(v_num[-1])
