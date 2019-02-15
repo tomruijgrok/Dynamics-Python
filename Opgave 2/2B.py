@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Feb 15 11:58:45 2019
+
+@author: tomruijgrok
+"""
+
 #author Tom Ruijgrok
 
 import matplotlib.pyplot as plt 
@@ -44,12 +52,14 @@ def verplaatsinganalytisch(t):
 v_an, x_an = verplaatsinganalytisch(t)
 
 
-print('a:', acc)
-print("v_num:",  v_num[-1])
-print('x_an', x_an[-1])
-print('verschil:',  (x_an[-1]-x_num[-1]))
+xint = np.interp(7000, t , x_num)
+print(xint)
 
+print(v_an[-1])
+print(x_an[-1])
 
+print(v_num[-1])
+print(x_num[-1])
 
 plt.plot(t, x_an)
 
