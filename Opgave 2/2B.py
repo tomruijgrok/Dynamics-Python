@@ -48,18 +48,28 @@ def verplaatsinganalytisch(t):
         v_an[n] = v0 + 0.1*t[n]
         x_an[n] = x0 + 0.5*0.1*t[n]**2 +v0*t[n]
     return v_an, x_an
-
+    
 v_an, x_an = verplaatsinganalytisch(t)
 
 
-xint = np.interp(7000, t , x_num)
-print(xint)
+def v_an(t):
+    a= acc
+    s = 7000
+    v=np.sqrt(2*a*s+v0**2)
+    return v
 
-print(v_an[-1])
-print(x_an[-1])
+v = v_an(t)
+print(v)
 
-print(v_num[-1])
-print(x_num[-1])
+
+vint = np.interp(7000, x_num , v_num)
+print('v:', vint, 'm/s')
+tint = np.interp(5000, x_num, t)
+print('t:', tint, 's')
+print(v_num)
+
+print('error:', vint-v, 'm/s')
 
 plt.plot(t, x_an)
+plt.plot(t,x_num)
 
