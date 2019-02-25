@@ -25,19 +25,18 @@ v_num[0] = v0  #put initial velocity into first element of result vector
 def derivatives(state, t): #function name is free to choose, but it must take exactly these two inputs
     y = state[0] #this will seem useless for now, but it is best to always unpack your states here
     v = state[1] #same as above, but a little less useless because we will provide v as a return value
-    a = g        #you will modify this line several times during this assignment. For now: constant a
+    a = (-k*state[0])/m      #you will modify this line several times during this assignment. For now: constant a
     return [v, a]
 
 for n in range(len(t)-1):
     afgeleiden = derivatives([y_num[n], v_num[n]], t[n])  #calculate derivatives based on previous state
     # calculate new states based on old states and old derivatives
-
     # notice how the two states (y and v) are treated exactly the same
-
     y_num[n+1] = y_num[n] + afgeleiden[0]*dt
-    v_num[n+1] = v_num[n] + afgeleiden[1]*dt  
+    v_num[n+1] = v_num[n] + afgeleiden[1]*dt
+    if y_num[n]*y_num[n+1] == 0:
+        print(t)  
      
 plt.figure(1)
 plt.plot(t, y_num)
-print('y (t=10s)', y_num[-1], 'm/s')
-print("choice 1 + 4")
+print('y_num', y_num[-1], 'm')
