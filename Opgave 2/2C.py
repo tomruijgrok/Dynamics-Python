@@ -29,3 +29,4 @@ a, x_num, v_num = verplaatsingnumeriek(t)
 
 print('v:', v_num[-1], 'm/s')
 print('s:', x_num[800] ,'m')
+
