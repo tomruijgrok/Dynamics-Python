@@ -31,12 +31,10 @@ def derivatives(state, t): #function name is free to choose, but it must take ex
 for n in range(len(t)-1):
     afgeleiden = derivatives([y_num[n], v_num[n]], t[n])  #calculate derivatives based on previous state
     # calculate new states based on old states and old derivatives
-
     # notice how the two states (y and v) are treated exactly the same
-
     y_num[n+1] = y_num[n] + afgeleiden[0]*dt
     v_num[n+1] = v_num[n] + afgeleiden[1]*dt  
      
 plt.figure(1)
 plt.plot(t, y_num)
-print('y (t=10s)', y_num[-1], 'm/s')
+print('y:', y_num[-1], 'm/s')
